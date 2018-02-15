@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous (name = "Auto Red 1", group = "8087")
-@Disabled
+//@Disabled
 /**
  * Created by Emmanuel on 12/8/2017.
  */

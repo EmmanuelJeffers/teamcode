@@ -19,7 +19,6 @@ public class Auto_333 extends LinearOpMode {
     static final double DRIVE_SPEED =  0.8;
     static final double TURN_SPEED  = 0.6;
 
-
     @Override
     public void runOpMode(){
 

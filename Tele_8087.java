@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  */
 
 @TeleOp(name = "Tele 8087", group = "8087")
-@Disabled
+//@Disabled
 public class Tele_8087 extends OpMode {
 
     /* Declare OpMode members */
@@ -59,10 +59,10 @@ public class Tele_8087 extends OpMode {
 
         if (gamepad1.left_bumper){
             robot.slide1.setPower(1);
-            robot.slide2.setPower(1);
+            robot.slide2.setPower(-1);
         } else if (gamepad1.right_bumper){
             robot.slide1.setPower(-1);
-            robot.slide2.setPower(-1);
+            robot.slide2.setPower(1);
         } else {
             robot.slide1.setPower(0);
             robot.slide2.setPower(0);

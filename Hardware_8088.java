@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.kauailabs.NavxMicroNavigationSensor;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -23,11 +25,13 @@ public class Hardware_8088 {
     //public DcMotor Relic; //motor to get on the balancing stone
 
     public Servo GlyphGrabber1; //glyph grabber mech
-    //public Servo GlyphGrabber2;
+    public Servo GlyphGrabber2;
     public Servo GlyphPusher;
     public Servo JewelKnocker;
 
-    public ColorSensor color; //jewel mech
+    public ColorSensor    color; //jewel mech
+    public DistanceSensor distance;
+    public NavxMicroNavigationSensor nav;
 
     HardwareMap hwMap = null;
     private ElapsedTime period = new ElapsedTime();
@@ -42,7 +46,7 @@ public class Hardware_8088 {
         Righty1 = hwMap.get(DcMotor.class, "Righty1");
         Righty2 = hwMap.get(DcMotor.class, "Righty2");
 
-        Glypher = hwMap.get(DcMotor.class, "glypher");
+        //Glypher = hwMap.get(DcMotor.class, "glypher");
         //Relic = hwMap.get(DcMotor.class, "relic");
 
         GlyphGrabber1 = hwMap.get(Servo.class, "grabber1");
@@ -50,7 +54,9 @@ public class Hardware_8088 {
         GlyphPusher   = hwMap.get(Servo.class, "pusher");
         JewelKnocker  = hwMap.get(Servo.class, "knocker");
 
-        color = hwMap.get(ColorSensor.class, "color");
+        color    = hwMap.get(ColorSensor.class, "color");
+        distance = hwMap.get(DistanceSensor.class, "distance");
+        nav      = hwMap.get(NavxMicroNavigationSensor.class, "navX");
 
         //Set direction of motors
         Lefty1.setDirection(DcMotor.Direction.FORWARD);

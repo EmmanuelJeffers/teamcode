@@ -28,6 +28,7 @@ public class Hardware_8087 {
 
     public Servo mastServo1;
     public Servo mastServo2;
+    public Servo JewelKnocker;
 
     public ColorSensor Color;
 
@@ -49,6 +50,7 @@ public class Hardware_8087 {
 
         mastServo1 = hwMap.get(Servo.class, "raise1");
         mastServo2 = hwMap.get(Servo.class, "raise2");
+        JewelKnocker = hwMap.get(Servo.class, "knocker");
 
         slide2 = hwMap.get(DcMotor.class, "slide2");
         slide1 = hwMap.get(DcMotor.class, "slide1");

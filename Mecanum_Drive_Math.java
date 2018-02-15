@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  */
 
 @TeleOp (name = "Mecanum Drive", group = "Tele Test ")
-//@Disabled
+@Disabled
 public class Mecanum_Drive_Math extends OpMode {
 
     Hardware_8088 robot = new Hardware_8088();

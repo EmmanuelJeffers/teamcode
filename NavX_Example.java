@@ -44,7 +44,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 @Autonomous(name = "NavX Micro Test", group = "Auto Tests")
-//@Disabled
+@Disabled
 public class NavX_Example extends LinearOpMode {
     /** In this sample, for illustration purposes we use two interfaces on the one gyro object.
      * That's likely atypical: you'll probably use one or the other in any given situation,
@@ -62,7 +62,7 @@ public class NavX_Example extends LinearOpMode {
     private final double YAW_PID_I = 0.0;
     private final double YAW_PID_D = 0.0;
 
-    Hardware_333 brobot = new Hardware_333();
+    Hardware_8088 brobot = new Hardware_8088();
     // A timer helps provide feedback while calibration is taking place
     ElapsedTime timer = new ElapsedTime();
 
@@ -72,7 +72,7 @@ public class NavX_Example extends LinearOpMode {
 
         // Wait until the gyro calibration is complete
         timer.reset();
-        while (brobot.navxMicro.isCalibrating())  {
+        while (brobot.nav.isCalibrating())  {
             telemetry.addData("calibrating", "%s", Math.round(timer.seconds())%2==0 ? "|.." : "..|");
             telemetry.update();
             Thread.sleep(50);
@@ -89,14 +89,13 @@ public class NavX_Example extends LinearOpMode {
             // Read dimensionalized data from the gyro. This gyro can report angular velocities
             // about all three axes. Additionally, it internally integrates the Z axis to
             // be able to report an absolute angular Z orientation.
-            AngularVelocity rates = brobot.gyro.getAngularVelocity(AngleUnit.DEGREES);
-            Orientation angles = brobot.gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+            AngularVelocity rates = brobot.nav.getAngularVelocity(AngleUnit.DEGREES);
+            Orientation angles = brobot.nav.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
             telemetry.addLine()
                     .addData("dx", formatRate(rates.xRotationRate))
                     .addData("dy", formatRate(rates.yRotationRate))
                     .addData("dz", "%s deg/s", formatRate(rates.zRotationRate));
-
             telemetry.addLine()
                     .addData("heading", formatAngle(angles.angleUnit, angles.firstAngle))
                     .addData("roll", formatAngle(angles.angleUnit, angles.secondAngle))

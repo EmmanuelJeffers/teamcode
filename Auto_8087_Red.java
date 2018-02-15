@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @Autonomous(name = "Auto 8087", group = "8087")
-@Disabled
+//@Disabled
 public class Auto_8087_Red extends LinearOpMode {
 
     /* Declare OpMode members */

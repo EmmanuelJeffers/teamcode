@@ -12,6 +12,10 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+
+import java.util.Locale;
+
 @Autonomous (name = "Auto 8088 Red 2", group = "8088")
 @Disabled
 /**
@@ -60,34 +64,21 @@ public class Auto_8088_Red2 extends LinearOpMode {
 
         final float values[] = hsvValues;
 
+        final double SCALE_FACTOR = 255;
+
         int relativeLayoutId = hardwareMap.appContext.getResources().getIdentifier("RelativeLayout", "id", hardwareMap.appContext.getPackageName());
         final View relativeLayout = ((Activity) hardwareMap.appContext).findViewById(relativeLayoutId);
-
-        boolean bPrevState = false;
-        boolean bCurrState = false;
-
-        boolean bLedOn = true;
-
-        boolean blueSensed = true;
-
-        brobot.color.enableLed(bLedOn);
 
         waitForStart();
 
         while (opModeIsActive()) {
 
-            bCurrState = gamepad1.x;
-
-            if (bCurrState && (bCurrState != bPrevState)){
-                bLedOn = !bLedOn;
-                brobot.color.enableLed(bLedOn);
-            }
-
-            bPrevState = bCurrState;
-
-            Color.RGBToHSV(brobot.color.red() * 8, brobot.color.green() * 8, brobot.color.blue() * 8, hsvValues);
-
-            telemetry.addData("LED", bLedOn ? "On" : "Off");
+            Color.RGBToHSV((int)(brobot.color.red()*SCALE_FACTOR),
+                    (int)(brobot.color.blue()*SCALE_FACTOR),
+                    (int)(brobot.color.green()*SCALE_FACTOR),
+                    hsvValues);
+            telemetry.addData("Distance (in)",
+                    String.format(Locale.US, "%.02f", brobot.distance.getDistance(DistanceUnit.INCH)));
             telemetry.addData("Clear", brobot.color.alpha());
             telemetry.addData("Red  ", brobot.color.red());
             telemetry.addData("Green", brobot.color.green());

@@ -68,14 +68,14 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
  */
 
 @Autonomous(name="VuMark Id", group ="Auto Tests")
-//@Disabled
+@Disabled
 public class VuMark_Test extends LinearOpMode {
 
     public static final String TAG = "Vuforia VuMark Sample";
 
     OpenGLMatrix lastLocation = null;
 
-    Hardware_9385 brobot = new Hardware_9385();
+    Hardware_8088 brobot = new Hardware_8088();
     private ElapsedTime runtime = new ElapsedTime();
 
     static final double DRIVE_SPEED = 0.8;

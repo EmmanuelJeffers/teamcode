@@ -82,10 +82,10 @@ public class Tele_9385 extends OpMode {
         }
 
         if (gamepad1.a){
-            robot.Grab1.setPosition(MAX_POSITION);
+            robot.Grab1.setPosition(MIN_POSITION);
             robot.Grab2.setPosition(MIN_POSITION);
         } else if (gamepad1.b){
-            robot.Grab1.setPosition(MIN_POSITION);
+            robot.Grab1.setPosition(MAX_POSITION);
             robot.Grab2.setPosition(MAX_POSITION);
         }
     }
